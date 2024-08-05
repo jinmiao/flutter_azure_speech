@@ -1,7 +1,7 @@
 name: flutter_azure_speech
 description: "A new Flutter plugin project."
 version: 0.0.1
-homepage:
+homepage: https://github.com/jinmiao/flutter_azure_speech
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
@@ -35,7 +35,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.flutter_azure_speech
+        package: life.aichats.flutter_azure_speech
         pluginClass: FlutterAzureSpeechPlugin
       ios:
         pluginClass: FlutterAzureSpeechPlugin
