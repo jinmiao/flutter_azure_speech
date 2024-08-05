@@ -1,5 +1,7 @@
 import Flutter
 import UIKit
+import MicrosoftCognitiveServicesSpeech
+import AVFoundation
 
 public class FlutterAzureSpeechPlugin: NSObject, FlutterPlugin {
   private var subscriptionKey: String?
@@ -36,30 +38,33 @@ public class FlutterAzureSpeechPlugin: NSObject, FlutterPlugin {
         result(FlutterError(code: "INVALID_ARGUMENT", message: "Invalid arguments. No language set.", details: nil))
         return
       }
-      getSpeechToText(subscriptionKey: subscriptionKey, region: region, language: language, result: result)
+      getSpeechToText(subscriptionKey: subscriptionKey, region: region, language: language, completion: result)
     default:
       result(FlutterMethodNotImplemented)
     }
   }
 
-  private func getSpeechToText(subscriptionKey: String, region: String, language: String, result: @escaping FlutterResult) {
+  private func getSpeechToText(subscriptionKey: String, region: String, language: String, completion: @escaping FlutterResult) {
     requestMicrophonePermission { granted in
       if granted {
-        let speechConfig = try! SpeechConfig(subscription: subscriptionKey, region: region)
-        speechConfig.speechRecognitionLanguage = language
-        let audioConfig = AudioConfig()
-        let recognizer = try! SpeechRecognizer(speechConfig: speechConfig, audioConfig: audioConfig)
-
-        recognizer.recognizeOnce { (outcome) in
-          switch outcome {
-          case .success(let recognitionResult):
-            result(recognitionResult.text)
-          case .failure(let error):
-            result(FlutterError(code: "RECOGNITION_ERROR", message: error.localizedDescription, details: nil))
-          }
+        do {
+            let speechConfig = try SPXSpeechConfiguration(subscription: subscriptionKey, region: region)
+            speechConfig.speechRecognitionLanguage = language
+            let audioConfig = SPXAudioConfiguration()
+            let recognizer = try SPXSpeechRecognizer(speechConfiguration: speechConfig, audioConfiguration: audioConfig)
+            try recognizer.recognizeOnceAsync { (result: SPXSpeechRecognitionResult?) in
+                if let result = result {
+                    completion(result.text ?? "")
+                } else {
+                    completion(nil)
+                }
+            }
+        } catch {
+            print("Error initializing speech recognizer: \(error)")
+            completion(nil)
         }
       } else {
-        result(FlutterError(code: "PERMISSION_DENIED", message: "Microphone permission denied", details: nil))
+        completion(FlutterError(code: "PERMISSION_DENIED", message: "Microphone permission denied", details: nil))
       }
     }
   }

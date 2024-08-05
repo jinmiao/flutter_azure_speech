@@ -1,15 +1,45 @@
 # flutter_azure_speech
 
-A new Flutter plugin project.
+Flutter implementation of [Microsoft Azure Speech service](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/)
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+Initialise the framework with your Region and Subscription key
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+Future<void> _initializeSpeechRecognition() async {
+    try {
+      await _flutterAzureSpeechPlugin.initialize(
+          "YOUR SUBSCRIPTION KEY", "YOUR REGION");
+    } catch (e) {
+      print('Error initializing speech recognition: $e');
+    }
+  }
+```
+
+
+Obtain the text transcription of the speech by passing in the specific language
+
+```dart
+Future<void> _startSpeechRecognition() async {
+    try {
+      setState(() {
+        _recognizedText = "Listening...";
+      });
+
+      String recognizedText =
+          await _flutterAzureSpeechPlugin.getSpeechToText("zh-CN") ?? "";
+          
+      setState(() {
+        _recognizedText = recognizedText;
+      });
+    } catch (e) {
+      print('Error during speech recognition: $e');
+
+      setState(() {
+        _recognizedText = "An error occurred during speech recognition.";
+      });
+    }
+  }
+```
 
