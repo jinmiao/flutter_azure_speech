@@ -1,6 +1,6 @@
 name: flutter_azure_speech
 description: "Flutter implementation of Microsoft Azure Speech Speech-To-Text"
-version: 0.0.4
+version: 0.0.5
 homepage: https://github.com/jinmiao/flutter_azure_speech
 
 environment:
