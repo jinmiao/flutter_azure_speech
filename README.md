@@ -17,7 +17,6 @@ Future<void> _initializeSpeechRecognition() async {
   }
 ```
 
-
 Obtain the text transcription of the speech by passing in the specific language
 
 ```dart
@@ -29,7 +28,7 @@ Future<void> _startSpeechRecognition() async {
 
       String recognizedText =
           await _flutterAzureSpeechPlugin.getSpeechToText("zh-CN") ?? "";
-          
+
       setState(() {
         _recognizedText = recognizedText;
       });
@@ -43,3 +42,6 @@ Future<void> _startSpeechRecognition() async {
   }
 ```
 
+示例截图
+
+ ![Android示例截图](images/android_demo.jpg)
