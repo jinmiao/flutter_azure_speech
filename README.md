@@ -44,4 +44,4 @@ Future<void> _startSpeechRecognition() async {
 
 ## 示例截图
 
- ![Android示例截图](images/android_demo.jpg)
+ <img src="images/android_demo.jpg" alt="Android示例截图" width="40%">
