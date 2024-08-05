@@ -2,6 +2,9 @@
 
 Flutter implementation of [Microsoft Azure Speech service](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/)
 
+ - Speech to Text [Done]
+ - Text to Speech [InProgress]
+
 ## Getting Started
 
 Initialise the framework with your Region and Subscription key
@@ -17,7 +20,9 @@ Future<void> _initializeSpeechRecognition() async {
   }
 ```
 
-Obtain the text transcription of the speech by passing in the specific language
+## Speech to Text
+
+Start the speech recognition process by calling the `getSpeechToText` method.
 
 ```dart
 Future<void> _startSpeechRecognition() async {
@@ -41,6 +46,10 @@ Future<void> _startSpeechRecognition() async {
     }
   }
 ```
+
+## Text to Speech
+
+[InProgress]
 
 ## 示例截图
 
