@@ -73,10 +73,9 @@ packages:
   flutter_azure_speech:
     dependency: "direct main"
     description:
-      name: flutter_azure_speech
-      sha256: "717c217156c566b664a6f887285d154a30ac7d4e2e182ab6f1ecf8c963ac58f7"
-      url: "https://pub.dev"
-    source: hosted
+      path: ".."
+      relative: true
+    source: path
     version: "0.0.2"
   flutter_driver:
     dependency: transitive

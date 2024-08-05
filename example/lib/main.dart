@@ -107,7 +107,6 @@ class _MyAppState extends State<MyApp> {
       String recognizedText =
           await _flutterAzureSpeechPlugin.getSpeechToText("zh-CN") ?? "";
 
-      // Update state and close dialog
       setState(() {
         _recognizedText = recognizedText;
       });
