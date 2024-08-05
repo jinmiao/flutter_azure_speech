@@ -1,4 +1,4 @@
-package com.example.flutter_azure_speech
+package life.aichats.flutter_azure_speech
 
 import androidx.annotation.NonNull
 
