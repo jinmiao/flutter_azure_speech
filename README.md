@@ -1,5 +1,7 @@
 # flutter_azure_speech
 
+[![pub.dev](https://img.shields.io/pub/v/flutter_azure_speech?label=pub.dev&labelColor=333940&color=00b9fc)](https://pub.dev/packages/flutter_azure_speech)
+
 Flutter implementation of [Microsoft Azure Speech service](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/)
 
  - Speech to Text [Done]
