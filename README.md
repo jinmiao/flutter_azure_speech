@@ -53,6 +53,6 @@ Future<void> _startSpeechRecognition() async {
 
 ## 示例截图
 
- <img src="https://github.com/jinmiao/flutter_azure_speech/blob/master/images/android_demo.jpg" alt="Android示例截图" width="40%">
+ <img src="https://raw.githubusercontent.com/jinmiao/flutter_azure_speech/master/images/android_demo.jpg" alt="Android示例截图" width="40%">
 
  
